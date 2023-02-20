@@ -20,7 +20,7 @@ class Bed extends Product
     ) {
         parent::__construct($name, $pic, $price, $description, $brand, $genre, $category);
         $this->setMaterial(trim($material));
-        $this->setSizes(trim($sizes));
+        $this->setSizes($sizes);
     }
 
     public function setMaterial($material)

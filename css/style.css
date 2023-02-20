@@ -15,6 +15,12 @@ main {
   background-color: rgb(29, 45, 60);
 }
 
+.col .card.cs-card {
+  height: 480px;
+}
+
 .card .card-img-top {
   height: 250px;
+  width: 200px;
+  margin: 10px auto;
 }
