@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/Product.php';
+
 class Game extends Product
 {
     private $material;
@@ -11,10 +13,11 @@ class Game extends Product
         $price,
         $description,
         $brand,
+        $genre,
         $material,
         $sizes
     ) {
-        parent::__construct($name, $pic, $price, $description, $brand);
+        parent::__construct($name, $pic, $price, $description, $brand, $genre);
         $this->setMaterial(trim($material));
         $this->setSizes(trim($sizes));
     }

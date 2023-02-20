@@ -7,14 +7,16 @@ class Product
     private $price;
     private $description;
     private $brand;
+    private $genre;
 
-    public function __construct($name, $pic, $price, $description, $brand)
+    public function __construct($name, $pic, $price, $description, $brand, Genre $genre)
     {
         $this->setName(trim($name));
         $this->setPic(trim($pic));
         $this->setPrice(trim($price));
         $this->setDescription(trim($description));
         $this->setBrand(trim($brand));
+        $this->genre = $genre;
     }
 
     public function setName($name)

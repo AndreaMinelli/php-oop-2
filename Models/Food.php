@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/Product.php';
+
 class Food extends Product
 {
     private $ingredients;
@@ -12,11 +14,12 @@ class Food extends Product
         $price,
         $description,
         $brand,
+        $genre,
         $ingredients,
         $container,
         $size
     ) {
-        parent::__construct($name, $pic, $price, $description, $brand);
+        parent::__construct($name, $pic, $price, $description, $brand, $genre);
         $this->setIngredients($ingredients);
         $this->setContainer(trim($container));
         $this->setSize(trim($size));
