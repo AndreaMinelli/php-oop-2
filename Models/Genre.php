@@ -11,7 +11,7 @@ class Genre
 
     public function setName($name)
     {
-        if (!$name && is_numeric($name)) return false;
+        if (!$name || is_numeric($name)) return false;
         $this->name = $name;
     }
 

@@ -15,11 +15,12 @@ class Food extends Product
         $description,
         $brand,
         $genre,
+        $category,
         $ingredients,
         $container,
         $size
     ) {
-        parent::__construct($name, $pic, $price, $description, $brand, $genre);
+        parent::__construct($name, $pic, $price, $description, $brand, $genre, $category);
         $this->setIngredients($ingredients);
         $this->setContainer(trim($container));
         $this->setSize(trim($size));
@@ -27,7 +28,7 @@ class Food extends Product
 
     public function setIngredients($ingredients)
     {
-        if (!$ingredients && gettype($ingredients) !== 'array') return false;
+        if (!$ingredients || gettype($ingredients) !== 'array') return false;
         $this->ingredients = $ingredients;
     }
 
@@ -42,7 +43,7 @@ class Food extends Product
 
     public function setContainer($container)
     {
-        if (!$container && is_numeric($container)) return false;
+        if (!$container || is_numeric($container)) return false;
         $this->container = $container;
     }
 
@@ -53,7 +54,7 @@ class Food extends Product
 
     public function setSize($size)
     {
-        if (!$size && !is_numeric($size)) return false;
+        if (!$size || !is_numeric($size)) return false;
         $this->size = $size;
     }
 

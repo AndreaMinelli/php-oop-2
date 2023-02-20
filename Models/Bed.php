@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/Product.php';
 
-class Game extends Product
+class Bed extends Product
 {
     private $material;
     private $sizes;
@@ -14,17 +14,18 @@ class Game extends Product
         $description,
         $brand,
         $genre,
+        $category,
         $material,
         $sizes
     ) {
-        parent::__construct($name, $pic, $price, $description, $brand, $genre);
+        parent::__construct($name, $pic, $price, $description, $brand, $genre, $category);
         $this->setMaterial(trim($material));
         $this->setSizes(trim($sizes));
     }
 
     public function setMaterial($material)
     {
-        if (!$material && is_numeric($material)) return false;
+        if (!$material || is_numeric($material)) return false;
         $this->material = $material;
     }
 
@@ -35,7 +36,7 @@ class Game extends Product
 
     public function setSizes($sizes)
     {
-        if (!$sizes && gettype($sizes) !== 'array') return false;
+        if (!$sizes || gettype($sizes) !== 'array') return false;
         $this->sizes = $sizes;
     }
 

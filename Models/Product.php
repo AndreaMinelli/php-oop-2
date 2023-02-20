@@ -8,20 +8,22 @@ class Product
     private $description;
     private $brand;
     private $genre;
+    private $category;
 
-    public function __construct($name, $pic, $price, $description, $brand, Genre $genre)
+    public function __construct($name, $pic, $price, $description, $brand, Genre $genre, $category)
     {
         $this->setName(trim($name));
         $this->setPic(trim($pic));
         $this->setPrice(trim($price));
         $this->setDescription(trim($description));
         $this->setBrand(trim($brand));
-        $this->genre = $genre;
+        $this->setGenre($genre);
+        $this->setCategory($category);
     }
 
     public function setName($name)
     {
-        if (!$name && is_numeric($name)) return false;
+        if (!$name || is_numeric($name)) return false;
         $this->name = $name;
     }
 
@@ -32,7 +34,7 @@ class Product
 
     public function setPic($pic)
     {
-        if (!$pic) return false;
+        if (!$pic || is_numeric($pic)) return false;
         $this->pic = $pic;
     }
 
@@ -43,7 +45,7 @@ class Product
 
     public function setPrice($price)
     {
-        if (!$price && !is_numeric($price)) return false;
+        if (!$price || !is_numeric($price)) return false;
         $this->price = $price;
     }
 
@@ -54,7 +56,7 @@ class Product
 
     public function setDescription($description)
     {
-        if (!$description && is_numeric($description)) return false;
+        if (!$description || is_numeric($description)) return false;
         $this->description = $description;
     }
 
@@ -68,12 +70,34 @@ class Product
 
     public function setBrand($brand)
     {
-        if (!$brand && is_numeric($brand)) return false;
+        if (!$brand || is_numeric($brand)) return false;
         $this->brand = $brand;
     }
 
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    public function setGenre($genre)
+    {
+        if (gettype($genre) !== 'object') return false;
+        $this->genre = $genre;
+    }
+
+    public function getGenre()
+    {
+        return $this->genre->getName();
+    }
+
+    public function setCategory($category)
+    {
+        if (!$category || is_numeric($category)) return false;
+        $this->category = $category;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

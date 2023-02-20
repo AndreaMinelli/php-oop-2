@@ -14,17 +14,18 @@ class Game extends Product
         $description,
         $brand,
         $genre,
+        $category,
         $material,
         $game_type
     ) {
-        parent::__construct($name, $pic, $price, $description, $brand, $genre);
+        parent::__construct($name, $pic, $price, $description, $brand, $genre, $category);
         $this->setMaterial(trim($material));
         $this->setGameType(trim($game_type));
     }
 
     public function setMaterial($material)
     {
-        if (!$material && is_numeric($material)) return false;
+        if (!$material || is_numeric($material)) return false;
         $this->material = $material;
     }
 
@@ -35,7 +36,7 @@ class Game extends Product
 
     public function setGameType($game_type)
     {
-        if (!$game_type && is_numeric($game_type)) return false;
+        if (!$game_type || is_numeric($game_type)) return false;
         $this->game_type = $game_type;
     }
 
